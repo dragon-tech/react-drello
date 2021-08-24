@@ -1,38 +1,24 @@
-import * as React from "react"
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-} from "@chakra-ui/react"
-import { ColorModeSwitcher } from "./ColorModeSwitcher"
-import { Logo } from "./Logo"
+import * as React from "react";
+import { ChakraProvider, CSSReset, Box, theme } from "@chakra-ui/react";
+import backgroundImage from "images/app-root-background.jpg";
+import Header from "component/Header";
+import KanbanStack from "component/Kanban/KanbanStack";
 
-export const App = () => (
+const App: React.FC = () => (
   <ChakraProvider theme={theme}>
-    <Box textAlign="center" fontSize="xl">
-      <Grid minH="100vh" p={3}>
-        <ColorModeSwitcher justifySelf="flex-end" />
-        <VStack spacing={8}>
-          <Logo h="40vmin" pointerEvents="none" />
-          <Text>
-            Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
-          </Text>
-          <Link
-            color="teal.500"
-            href="https://chakra-ui.com"
-            fontSize="2xl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn Chakra
-          </Link>
-        </VStack>
-      </Grid>
+    <CSSReset />
+    <Box
+      backgroundImage = {`url(${backgroundImage})`}
+      backgroundSize="cover"
+      backgroundPosition="50%"
+      height="100vh"
+      position="relative"
+    >
+      <Header />
+      <KanbanStack />
     </Box>
   </ChakraProvider>
-)
+);
+
+export default App;
+
